@@ -24,12 +24,14 @@ app.get('/json', function(req, res) {
 });
 
 // Use the .env File
-app.get('/json', function(req, res) {
-    if (process.env.MESSAGE_STYLE==='uppercase') {
+if (process.env.MESSAGE_STYLE==='uppercase') {
+    app.get('/json', function(req, res) {
         return res.json({"message" : "HELLO JSON"})
-    } else {
+    });
+} else {
+    app.get('/json', function(req, res) {
         return res.json({"message": "Hello json"})
-    }
-});
+    })
+};
 
  module.exports = app;
