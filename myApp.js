@@ -1,4 +1,4 @@
-require('dotenv').config({ path: require('find-config')('.env') })
+require('dotenv').config()
 var express = require('express');
 const res = require('express/lib/response');
 var app = express();
