@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({ path: require('find-config')('.env') })
 var express = require('express');
 const res = require('express/lib/response');
 var app = express();
@@ -24,7 +24,7 @@ app.use("/public", express.static(__dirname + "/public"));
 //     res.json({"message": "Hello json"})
 // });
 
-// Use the .env Filec
+// Use the .env File
 if (process.env.MESSAGE_STYLE=="uppercase"){
     app.get('/json', function(req, res) {
     return res.json({ "message": "HELLO JSON" })
