@@ -1,5 +1,6 @@
 require('dotenv').config()
 var express = require('express');
+const res = require('express/lib/response');
 var app = express();
 
 // Meet the Node console
@@ -24,9 +25,12 @@ app.use("/public", express.static(__dirname + "/public"));
 // });
 
 // Use the .env File
-app.get('/json', (req, res) => {
-    let message = 'Hello json';
-    (process.env.MESSAGE_STYLE == 'uppercase') ? message=message.toUpperCase() : message=message; res.json({'message': message});
-    });
+if (process.env.MESSAGE_STYLE==='uppercase') {
+    app.get('/json', function(req, res) {
+        res.json({"message": "HELLO JSON"})
+    })
+} else {
+    res.json({"message": "Hello json"})
+}
 
  module.exports = app;
