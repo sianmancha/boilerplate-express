@@ -36,5 +36,7 @@ if (process.env.MESSAGE_STYLE=="uppercase"){
     });
     }   
 
+    console.log(process.env.MESSAGE_STYLE);
+
 
  module.exports = app;
