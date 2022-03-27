@@ -25,17 +25,6 @@ app.use("/public", express.static(__dirname + "/public"));
 // });
 
 // Use the .env File
-// if (process.env.MESSAGE_STYLE=="uppercase"){
-//     app.get('/json', function(req, res) {
-//     return res.json({ "message": "HELLO JSON" })
-//     });
-//     }
-//     else {
-//     app.get('/json', function(req, res) {
-//      return res.json({ "message": "Hello json" })
-//     });
-//     }   
-
 app.get('/json', function(req, res) {
     if (process.env.MESSAGE_STYLE=="uppercase"){
         return res.json({ "message": "HELLO JSON" }) 
@@ -44,7 +33,6 @@ app.get('/json', function(req, res) {
     }
 })
 
-    
 
 
  module.exports = app;
