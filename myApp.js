@@ -3,28 +3,34 @@ var express = require('express');
 const res = require('express/lib/response');
 var app = express();
 
-// Meet the Node console
+// 7. Implement a Root-Level Request Logger Middleware
+app.use(function(req, res, next) {
+    console.log(req.method + " " + req.path + " - " + req.ip);
+    next();
+  });
+
+// 1. Meet the Node console
 console.log("Hello World")
 
-// Start a Working Express Server
+// 2. Start a Working Express Server
 // app.get('/', function(req, res) {
 //     res.send("Hello Express")
 // });
 
-// Serve an HTML File
+// 3. Serve an HTML File
 app.get('/', function(req, res) {
     res.sendFile(__dirname + "/views/index.html")
 });
 
-// Serve Static Assets
+// 4. Serve Static Assets
 app.use("/public", express.static(__dirname + "/public"));
 
-// Serve JSON on a Specific Route
+// 5. Serve JSON on a Specific Route
 // app.get('/json', function(req, res) {
 //     res.json({"message": "Hello json"})
 // });
 
-// Use the .env File
+// 6. Use the .env File
 app.get('/json', function(req, res) {
     if (process.env.MESSAGE_STYLE=="uppercase"){
         return res.json({ "message": "HELLO JSON" }) 
