@@ -2,12 +2,17 @@ require('dotenv').config()
 var express = require('express');
 const res = require('express/lib/response');
 var app = express();
+var bodyParser = require('body-parser')
 
 // 7. Implement a Root-Level Request Logger Middleware
 app.use(function(req, res, next) {
     console.log(req.method + " " + req.path + " - " + req.ip);
     next();
   });
+
+// 11. Use body-parser to Parse POST Requests
+app.use(bodyParser.urlencoded({extended : false}))
+app.use(bodyParser.json())
 
 // 1. Meet the Node console
 console.log("Hello World")
